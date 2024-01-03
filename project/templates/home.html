@@ -27,17 +27,18 @@
 
     
     <div class="container mx-auto py-8">
-
+        {% for post in posts reversed %}
         
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 
             
             <div class="bg-white p-6 rounded-md shadow-md">
-                <div class="card-header"><strong>@{{ post.author.username }}</strong></div>
+                <div class="card-header"><strong>{{ post.author.username }}</strong></div>
                 <h3 class="text-xl font-semibold mb-4">{{post.title}}</h3>
                 <p class="text-gray-600 mb-4">{{post.description}}</p>
-                <p class="text-sm text-gray-500"></p>
+                <h5 class="text-sm text-gray-500">{{post.created_at}}</h5>
             </div>
+            {% endfor %}
 
             <div class="mb-8">
                 {% if user == post.author or perms.main.delete_post %}
@@ -45,7 +46,7 @@
                     {% csrf_token %}
                     <button
                         type="submit"
-                        class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:shadow-outline-red active:bg-red-800"
+                        class="bg-red-500 text-white px-4 py-2 mb-4 rounded-md hover:bg-red-600 focus:outline-none focus:shadow-outline-red active:bg-red-800"
                         name="post-id"
                         value="{{post.id}}"
                     >
@@ -69,16 +70,11 @@
             </div>
             <div class="card-footer text-gray-500">{{ post.created_at }}</div>
             </div>
-            {% empty %}
-            <p class="mt-8 text-gray-500">No posts yet :(</p>
-            {% endfor %} {% endblock %}
-            
-
         </div>
 
-        <!-- Button to Go to Post Page -->
-        <div class="mt-8">
-            <a href="/create_post.html" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+        
+        <div class="mt-8 p-6">
+            <a href="create_post" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
                 Create Posts
             </a>
         </div>

@@ -18,7 +18,7 @@ def home(request):
 
         if post_id:
             post = Post.objects.filter(id=post_id).first()
-            if post and (post.author == request.user or request.user.has_perm("main.delete_post")):
+            if post and (post.author == request.user or request.user.has_perm("app.delete_post")):
                 post.delete()
         elif user_id:
             user = User.objects.filter(id=user_id).first()
@@ -39,7 +39,7 @@ def home(request):
 
 
 @login_required(login_url="/login")
-@permission_required("main.add_post", login_url="/login", raise_exception=True)
+@permission_required("app.add_post", login_url="/login", raise_exception=True)
 def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)

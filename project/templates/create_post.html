@@ -13,8 +13,9 @@
 
         <div class="w-full max-w-md">
 
-            <form class="bg-white p-8 shadow-md rounded-md" method="post">
+            <form class="bg-white p-8 shadow-md rounded-md" method="post" action="{% url 'create_post' %}">
                 {% csrf_token %}
+                
                 <h2 class="text-2xl font-semibold mb-6 text-center">Create Post</h2>
 
                 
