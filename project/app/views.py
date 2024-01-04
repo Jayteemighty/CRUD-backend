@@ -61,11 +61,11 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('/home')
+            return redirect('/')
     else:
         form = RegisterForm()
 
-    return render(request, 'signup.html', {"form": form})
+    return render(request, 'registration/signup.html', {"form": form})
 
 
 def login(request):
@@ -83,8 +83,8 @@ def login(request):
             return redirect('login')
     
     else:
-        return render(request, 'login.html')
+        return render(request, 'registration/login.html')
 
 def logout(request):
     auth.logout(request)
-    return redirect('login.html') 
+    return redirect('registration/login.html') 
