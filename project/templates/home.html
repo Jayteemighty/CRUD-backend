@@ -12,14 +12,14 @@
     
     <nav class="bg-blue-500 p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="/" class="text-white text-xl font-semibold">CRUD by JT</a>
+            <a href="{% url 'home' %}" class="text-white text-xl font-semibold">CRUD by JT</a>
 
             
             <div class="space-x-4">
                 {% if user.is_authenticated %}
-                <a href="logout" class="text-white">Log Out</a>
+                <a href="{% url 'login' %}" class="text-white">Log Out</a>
                 {% else %}
-                <a href="login" class="text-white">Login/signup</a>
+                <a href="{% url 'login' %}" class="text-white">Login/signup</a>
                 {% endif %}
             </div>
         </div>
@@ -76,7 +76,7 @@
 
         
         <div class="mt-8 p-6">
-            <a href="create_post" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+            <a href="{% url 'create_post' %}" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
                 Create Posts
             </a>
         </div>

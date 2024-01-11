@@ -29,7 +29,7 @@
 
             
             <div class="flex items-center justify-between">
-                <button type="submit" href="/" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+                <button type="submit" href="{% url 'home' %}" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
                     Login
                 </button>
                 <a href="#" class="text-blue-500 hover:underline">Forgot Password?</a>
@@ -37,7 +37,7 @@
         </form>
 
         <p class="mt-4 text-center text-gray-600 text-sm">
-            Don't have an account? <a href="signup" class="text-blue-500 hover:underline">Sign up</a>
+            Don't have an account? <a href="{% url 'signup' %}" class="text-blue-500 hover:underline">Sign up</a>
         </p>
 
     </div>
