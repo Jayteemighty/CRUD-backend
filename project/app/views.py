@@ -5,6 +5,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User, Group, auth
 from django.contrib import messages
 from .models import Post
+from django.urls import reverse
 
 # Create your views here.
 
@@ -47,7 +48,7 @@ def create_post(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return redirect("/home")
+            return redirect(reverse("home"))
     else:
         form = PostForm()
 
